@@ -7,8 +7,9 @@ type EigenLayerResponse = any;
 
 router.get<{}, EigenLayerResponse>("/", async (req, res) => {
   // fetch from eigenlayer
+  const address = req.query.address as string;
   const response = await axios.get(
-    "https://claims.eigenfoundation.org/clique-eigenlayer-api/campaign/eigenlayer/credentials?walletAddress=0x4daE741C81DABE5bb420FDC1bc91d2Ff6a41cf6e"
+    `https://claims.eigenfoundation.org/clique-eigenlayer-api/campaign/eigenlayer/credentials?walletAddress=${address}`
   );
 
   res.json(response.data);
