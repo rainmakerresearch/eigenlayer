@@ -30,8 +30,6 @@ router.get<{}, EigenLayerResponse>("/claims", async (req, res) => {
       }
     );
 
-    console.log(response);
-
     res.send(response.data);
   } catch (e) {
     console.log(e);
