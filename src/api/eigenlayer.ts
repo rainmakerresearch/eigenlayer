@@ -30,7 +30,9 @@ router.get<{}, EigenLayerResponse>("/claims", async (req, res) => {
       }
     );
 
-    res.send(response);
+    console.log(response);
+
+    res.send(response.data);
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Error fetching data from eigenlayer" });
