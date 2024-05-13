@@ -8,12 +8,15 @@ type EigenLayerResponse = any;
 router.get<{}, EigenLayerResponse>("/", async (req, res) => {
   // fetch from eigenlayer
   try {
-    const address = req.query.address as string;
     const response = await axios.get(
-      `https://claims.eigenfoundation.org/clique-eigenlayer-api/campaign/eigenlayer/credentials?walletAddress=${address}`
+      `/clique-eigenlayer-api/campaign/eigenlayer/credentials`,
+      {
+        baseURL: "https://claims.eigenfoundation.org/",
+        params: req.query,
+      }
     );
 
-    res.json(response.data);
+    res.json(response);
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Error fetching data from eigenlayer" });
