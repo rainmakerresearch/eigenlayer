@@ -5,7 +5,7 @@ const router = express.Router();
 
 type EigenLayerResponse = any;
 
-router.get<{}, EigenLayerResponse>("/", async (req, res) => {
+router.get<{}, EigenLayerResponse>("/claims", async (req, res) => {
   // fetch from eigenlayer
   try {
     const response = await axios.get(
